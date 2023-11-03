@@ -7,12 +7,71 @@ html {
     font-size: 16px;
   }
 }
-
+a{
+    text-decoration: none;
+}
 html {
   position: relative;
   min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    font-family: 'Gabarito', cursive;
+}
+#logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.navbar{
+    justify-content: space-evenly;
+}
+.row{
+    width: 50%;
+}
+#header-right-column{
+    display: flex;
+    align-items: center;
+    grid-gap: 1em;
+}
+#search-input{
+    background-color: #F4F4F4;
+}
+#header-right-column .option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+.navbar-categories{
+    display: block;
+    width: 100%;
+    background-color: #1C1C1C;
+}
+.navbar-categories .categories {
+        padding: 0 40px;
+        max-width: 1500px;
+        margin: 0 auto;
+}
+.list{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    list-style: none;
+}
+.list-item{
+    display: inline-block;
+    padding: 10px 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+
+}
+.list-item a {
+    color: white;
 }
