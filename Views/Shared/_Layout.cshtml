@@ -16,7 +16,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom">
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom justify-content-around">
             <div class="brand">
                 <a asp-controller="Home" asp-action="Index">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-soundwave" viewBox="0 0 16 16">
@@ -58,27 +58,27 @@
         <div class="navbar-categories">
             <div class="categories">
                 <ul class="list">
-                    <li class="list-item">
-                        <a href="#">Guitars/Basses</a>
-                    </li>
-                    <li class="list-item">
-                        <a href="#">Keys</a>
-                    </li>
-                    <li class="list-item">
-                        <a href="#">Drums</a>
-                    </li>
-                    <li class="list-item">
-                        <a href="#">Studio</a>
-                    </li>
-                    <li class="list-item">
-                        <a href="#">Microphones</a>
-                    </li>
-                    <li class="list-item">
-                        <a href="#">Software</a>
-                    </li>
-                    <li class="list-item">
-                        <a href="#">Accessories</a>
-                    </li>
+                    <a asp-area="" asp-controller="Categories" asp-action="GuitBass">
+                        <li class="list-item">Guitars/Basses</li>
+                    </a>
+                    <a asp-area="" asp-controller="Categories" asp-action="Keys">
+                        <li class="list-item">Keys</li>
+                    </a>
+                    <a asp-area="" asp-controller="Categories" asp-action="Drums">
+                        <li class="list-item">Drums</li>
+                    </a>
+                    <a asp-area="" asp-controller="Categories" asp-action="Studio">
+                        <li class="list-item">Studio</li>
+                    </a>
+                    <a asp-area="" asp-controller="Categories" asp-action="Microphones">
+                        <li class="list-item">Microphones</li>
+                    </a>
+                    <a asp-area="" asp-controller="Categories" asp-action="Software">
+                        <li class="list-item">Software</li>
+                    </a>
+                    <a asp-area="" asp-controller="Categories" asp-action="Accessories">
+                        <li class="list-item">Accessories</li>
+                    </a>
                 </ul>
 
             </div>

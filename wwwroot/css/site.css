@@ -28,9 +28,7 @@ body {
     transform: scale(1.1);
     transition: transform 0.3s; 
 }
-.navbar{
-    justify-content: space-evenly;
-}
+
 .row{
     width: 50%;
 }
@@ -80,10 +78,13 @@ body {
     cursor: pointer;
 
 }
+
 .list-item:hover{
     background-color: #3b83c7;  
     border-radius: 25px;
+
 }
-.list-item:hover a{
+a:hover .list-item {
     color: #fff;
+    transition: 0.15s;
 }
