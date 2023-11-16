@@ -56,7 +56,7 @@
                     </div>
                 </div>
         </nav>
-        <div class="navbar-categories">
+        <div class="navbar-categories bg-dark">
             <div class="categories">
                 <ul class="list">
                     <a asp-area="" asp-controller="Categories" asp-action="GuitBass">
@@ -91,9 +91,43 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - MusicStore - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="w-100 bg-dark" style="height: 300px">
+        <div class="w-100 h-25 d-flex justify-content-center">
+            <div class="w-25 h-100 d-flex justify-content-end align-items-center border-bottom border-primary">
+                <span class="m-lg-4 text-light h5">Get connected with us on social networks:</span>
+            </div>
+            <div class="w-25 h-100 d-flex justify-content-start align-items-center border-bottom border-primary">
+                <a href="" class="m-lg-4 me-4 text-reset">
+                    <i class="bi bi-facebook text-light h5"></i>
+                </a>
+                <a href="" class="m-lg-4 me-4 text-reset">
+                    <i class="bi bi-twitter text-light h5"></i>
+                </a>
+                <a href="" class="m-lg-4 me-4 text-reset">
+                    <i class="bi bi-instagram text-light h5"></i>
+                </a>
+                <a href="" class="m-lg-4 me-4 text-reset">
+                    <i class="bi bi-github text-light h5"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="w-100 h-75 d-flex justify-content-center">
+            <div class="w-25 h-100 d-flex justify-content-center align-items-center">
+                <ul class=" d-flex flex-column text-light">
+                    <li class="m-2">About us</li>
+                    <li class="m-2">Jobs & Careers</li>
+                    <li class="m-2">Cookie Settings</li>
+                    <li class="m-2">Privacy Policy</li>
+                    <li class="m-2">Warranty Rights</li>
+                </ul>
+            </div>
+            <div class="w-25 h-100 bg-danger">
+                <h3 class="text-sm-center text-light">Shop and pay safely</h3>
+                <div class="d-flex justify-content-center align-items-center">
+                    <i class="bi bi-paypal text-light h1"></i>
+                </div>
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
