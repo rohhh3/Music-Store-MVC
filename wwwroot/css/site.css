@@ -160,10 +160,11 @@ footer ul{
 }
 footer ul li {
     list-style: none;
-
 }
-footer ul li:last-child {
-
+footer ul li:hover {
+    cursor: pointer;
 }
+
+
 
 
