@@ -90,7 +90,7 @@ a:hover .list-item {
 .slider {
     display: flex;
     justify-content: center;
-    min-height: 100vh;
+    margin-bottom: 1em;
 }
 .wrapper {
     max-width: 2000px;
@@ -105,7 +105,7 @@ a:hover .list-item {
     font-size: 1.2rem;
     text-align: center;
     line-height: 46px;
-    background: #000000;
+    background: #363534;
     color: #fff;
     border-radius: 50%;
 }
@@ -151,6 +151,21 @@ a:hover .list-item {
     }
 }
 
+#main-content span{
+    font-size: 2.5em;
+    font-weight: bold;
+    letter-spacing: 3px;
+    border-bottom: 2px solid #3b83c7;
+    
+}
+
+#main-content p {
+    font-size: 1.3em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
 footer i:hover {
     cursor: pointer;
 }
@@ -164,7 +179,3 @@ footer ul li {
 footer ul li:hover {
     cursor: pointer;
 }
-
-
-
-
