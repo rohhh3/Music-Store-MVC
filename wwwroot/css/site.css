@@ -29,8 +29,9 @@ body {
     transition: transform 0.3s; 
 }
 
-.row{
+.row {
     width: 50%;
+    justify-content: center;
 }
 .option:hover {
     color: #3b83c7;
