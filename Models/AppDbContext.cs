@@ -9,5 +9,8 @@ namespace MusicStore.Models
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
+
+        public DbSet<Item> Items { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }

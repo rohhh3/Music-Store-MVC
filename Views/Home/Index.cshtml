@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model HomeViewModel
 
 <div class="slider mt-3">
     <div class="wrapper">
@@ -15,6 +16,7 @@
         <i id="right" class="bi bi-chevron-right"></i>
     </div>
 </div>
+
 
 <div id="main-content" class="w-100 p-3">
     <span class="d-flex w-100 justify-content-center">Categories</span>
@@ -64,7 +66,31 @@
             </div>
         </div>
 
-        
+    <!-- ZROBIC SEKCJE Z PROMOCJAMI -->
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @foreach (var item in Model.ItemsOfTheWeek)
+            {
+                <div class="col">
+                        <img src="@item.ImageThumbnailUrl" class="card-img-top" alt="@item.Name">
+                        <div class="card-body">
+                            <h4 class="d-grid">
+                            </h4>
+
+                            <div class="d-flex justify-content-between mt-2">
+                                <h2 class="text-start">
+                                    <a asp-controller="Item"
+                                       asp-action="Details"
+                                       asp-route-id="@item.ItemId"
+                                       >@item.Name</a>
+                                </h2>
+                                <h5 class="text-nowrap">
+                                    @item.Price.ToString("c")
+                                </h5>
+                            </div>
+                        </div>
+                </div>
+            }
+        </div>
     </div>
 </div>
 
