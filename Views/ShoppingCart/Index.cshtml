@@ -1,0 +1,101 @@
+﻿@model ShoppingCartViewModel
+@{
+    string selectedCurrency = ViewBag.SelectedCurrency ?? "PLN";
+}
+<h3 class="d-flex justify-content-center  my-5">
+    Shopping cart
+</h3>
+
+<div class="d-flex justify-content-center">
+    <div class="row">
+        @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
+        {
+            <div class="card shopping-cart-card mb-2">
+                <div class="row">
+                    <img src="@line.Item.ImageThumbnailUrl" class="img-fluid rounded-start p-2" alt="@line.Item.Name">
+                    <div class="card-body">
+                        <h5 class="card-text">@line.Amount x @line.Item.Name</h5>
+
+                        @if (line.Item.IsItemOfTheWeek)
+                        {
+                            <p class="card-text">
+                                <span style="text-decoration: line-through;">
+                                    Original Price:
+                                    @{
+                                        string originalFormattedPrice = FormatCurrency(line.Item.Price);
+                                    }
+                                    @originalFormattedPrice
+                                </span>
+                                <br />
+
+                                <span>
+                                    Discounted Price:
+                                    @{
+                                        float discount = line.Item.Discount ?? 0;
+                                        decimal discountedPrice = line.Item.Price - (line.Item.Price * (decimal)discount);
+                                        string discountedFormattedPrice = FormatCurrency(discountedPrice);
+                                    }
+                                    @discountedFormattedPrice
+                                </span>
+                            </p>
+                        }
+                        else
+                        {
+                            <h2>@FormatCurrency(line.Item.Price)</h2>
+                        }
+
+                        <form method="post" asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart">
+                            <input type="hidden" name="itemId" value="@line.Item.ItemId" />
+                            <button type="submit" class="btn btn-danger">Remove</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-4">
+        <div class="card shopping-cart-card p-3">
+            <div class="row">
+                <h4 class="col">Total:</h4>
+                @{
+                    decimal total = 0;
+
+                    foreach (var line in Model.ShoppingCart.ShoppingCartItems)
+                    {
+                        decimal itemPrice = line.Item.IsItemOfTheWeek
+                        ? line.Item.Price - (line.Item.Price * (decimal)(line.Item.Discount ?? 0))
+                        : line.Item.Price;
+
+                        total += itemPrice * line.Amount;
+                    }
+
+                    <h4 class="col text-end">@FormatCurrency(total)</h4>
+                }
+            </div>
+            <hr />
+            <div class="text-center d-grid">
+                <a class="btn btn-success" asp-controller="Order" asp-action="Checkout" asp-route-selectedCurrency="@selectedCurrency">
+                    <h4>Check out now</h4>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@functions
+{
+    string FormatCurrency(decimal price)
+    {
+        string formattedPrice = "";
+
+        if (ViewBag.SelectedCurrency == "PLN")
+        {
+            formattedPrice = $"{Math.Round(price / ViewBag.ExchangeRate, 2)} zł";
+        }
+        else if (ViewBag.SelectedCurrency == "USD")
+        {
+            formattedPrice = $"${Math.Round(price / ViewBag.ExchangeRate, 2)}";
+        }
+        return formattedPrice;
+    }
+}

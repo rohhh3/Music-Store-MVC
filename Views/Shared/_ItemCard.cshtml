@@ -1,0 +1,81 @@
+﻿@model Item
+<div class="card mb-3 w-50">
+    <div class="row align-items-center">
+        <div class="col-md-4">
+            <img src="@Model.ImageThumbnailUrl" class="card-img-top" alt="@Model.Name">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="text-start">
+                    <a asp-controller="Item"
+                       asp-action="Details"
+                       asp-route-id="@Model.ItemId">@Model.Name</a>
+                </h5>
+
+                @if (Model.IsItemOfTheWeek)
+                {
+                    <p class="card-text">
+                        <div style="text-decoration: line-through;">
+                            Original Price:
+                            @{
+                                string originalFormattedPrice = "";
+                                if (ViewBag.SelectedCurrency == "PLN")
+                                {
+                                    originalFormattedPrice = $"{Math.Round(Model.Price / ViewBag.ExchangeRate, 2)} zł";
+                                }
+                                else if (ViewBag.SelectedCurrency == "USD")
+                                {
+                                    originalFormattedPrice = $"${Math.Round(Model.Price / ViewBag.ExchangeRate, 2)}";
+                                }
+                            }
+                            @originalFormattedPrice
+                        </div>
+                        <br />
+
+                        <div>
+                            Discounted Price:
+                            @{
+                                float discount = Model.Discount ?? 0; //konwersja do float
+                                decimal discountedPrice = Model.Price - (Model.Price * (decimal)discount);
+                                string discountedFormattedPrice = "";
+                                if (ViewBag.SelectedCurrency == "PLN")
+                                {
+                                    discountedFormattedPrice = $"{Math.Round(discountedPrice * ViewBag.ExchangeRate, 2)} zł";
+                                }
+                                else if (ViewBag.SelectedCurrency == "USD")
+                                {
+                                    discountedFormattedPrice = $"${Math.Round(discountedPrice / ViewBag.ExchangeRate, 2)}";
+                                }
+                            }
+                            @discountedFormattedPrice
+                        </div>
+                    </p>
+                }
+                else
+                {
+
+                    string formattedPrice = "";
+
+                    if (ViewBag.SelectedCurrency == "PLN")
+                    {
+                        formattedPrice = $"{Math.Round(Model.Price / ViewBag.ExchangeRate, 2)} zł";
+                    }
+                    else if (ViewBag.SelectedCurrency == "USD")
+                    {
+                        formattedPrice = $"${Math.Round(Model.Price / ViewBag.ExchangeRate, 2)}";
+                    }
+
+
+                    <p class="card-text">@formattedPrice</p>
+                }
+
+                <a class="btn btn-success"
+                   asp-controller="ShoppingCart"
+                   asp-action="AddToShoppingCart"
+                   asp-route-itemId="@Model.ItemId">
+                    + Add to cart
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

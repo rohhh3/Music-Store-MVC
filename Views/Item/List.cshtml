@@ -1,0 +1,19 @@
+﻿@model ItemListViewModel
+
+<div class="category-thumbnail mb-3" style="background-image: url(@Model.CategoryImageUrl)">
+    <div class="thumbnail-text">
+        @Model.CurrentCategory
+    </div>
+</div>
+
+
+<a class="btn btn-primary" asp-controller="Categories" asp-action="GeneratePdf" asp-route-categoryName="@Model.CategoryName">Generate PDF</a>
+
+<div class="row row-cols-1 row-cols-md-3 g-4 w-100" id="tblItems">
+
+    @foreach (var item in Model.Items)
+    {
+        <partial name="_ItemCard" model="item" />
+    }
+
+</div>
