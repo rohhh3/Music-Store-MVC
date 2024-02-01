@@ -1,0 +1,11 @@
+﻿<div class="col-sm-4 col-lg-4 col-md-4">
+    <div class="thumbnail">
+        <img src="@Item?.ImageThumbnailUrl" alt="">
+        <div class="caption">
+            <h3 class="pull-right">@Item?.Price.ToString("c")</h3>
+            <h3>
+                <a href="/item/details/@Item?.ItemId">@Item?.Name</a>
+            </h3>
+        </div>
+    </div>
+</div>

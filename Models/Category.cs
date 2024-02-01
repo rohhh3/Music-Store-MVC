@@ -6,5 +6,6 @@
         public string CategoryName { get; set; } = string.Empty;
         public string? Description { get; set; }
         public List<Item>? Items { get; set; }
+        public string? ImageUrl { get; set; }
     }
 }
