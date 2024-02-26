@@ -3,93 +3,90 @@
 }
 @model HomeViewModel
 
-<div class="slider mt-3">
-    <div class="wrapper">
-        <i id="left" class="bi bi-chevron-left"></i>
-        <div class="carousel">
-            <img src="~/imgs/photo6.jpg" alt="img">
-            <img src="~/imgs/photo7.jpg" alt="img">
-            <img src="~/imgs/photo8.jpg" alt="img">
-            <img src="~/imgs/photo9.jpg" alt="img">
-            <img src="~/imgs/photo10.jpg" alt="img">
-        </div>
-        <i id="right" class="bi bi-chevron-right"></i>
-    </div>
-</div>
-
+<partial name="_Carousel"/>
 
 <div id="main-content" class="w-100 p-3">
     <span class="d-flex w-100 justify-content-center">Categories</span>
     <div class="d-flex w-100 flex-wrap align-content-lg-around justify-content-lg-evenly">
+        
+        <a asp-controller="Item" asp-action="List" asp-route-category="Guitars">
+            <div class="card">
+                <img class="card-img-top" src="~/imgs/categories/guit.jpg" alt="Card image cap" style="height: 16rem;">
+                <div class="card-body">
+                    <p class="card-text">Guitars and Basses</p>
+                </div>
+            </div>
+        </a>    
 
-        <div class="card">
-            <img class="card-img-top" src="~/imgs/categories/guit.jpg" alt="Card image cap" style="height: 16rem;">
-            <div class="card-body">
-                <p class="card-text">Guitars and Basses</p>
+        <a asp-controller="Item" asp-action="List" asp-route-category="Keys">
+            <div class="card">
+                <img class="card-img-top" src="~/imgs/categories/keys.jpg" alt="Card image cap" style="height: 16rem;">
+                <div class="card-body">
+                    <p class="card-text">Keys</p>
+                </div>
             </div>
-        </div>
+        </a>
 
-        <div class="card">
-            <img class="card-img-top" src="~/imgs/categories/keys.jpg" alt="Card image cap" style="height: 16rem;">
-            <div class="card-body">
-                <p class="card-text">Keys</p>
+        <a asp-controller="Item" asp-action="List" asp-route-category="Drums">
+            <div class="card">
+                <img class="card-img-top" src="~/imgs/categories/drums.jpg" alt="Card image cap" style="height: 16rem;">
+                <div class="card-body">
+                    <p class="card-text">Drums</p>
+                </div>
             </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src="~/imgs/categories/drums.jpg" alt="Card image cap" style="height: 16rem;">
-            <div class="card-body">
-                <p class="card-text">Drums</p>
+        </a>
+
+        <a asp-controller="Item" asp-action="List" asp-route-category="Studio">
+            <div class="card">
+                <img class="card-img-top" src="~/imgs/categories/studio.jpg" alt="Card image cap" style="height: 16rem;">
+                <div class="card-body">
+                    <p class="card-text">Studio</p>
+                </div>
             </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src="~/imgs/categories/studio.jpg" alt="Card image cap" style="height: 16rem;">
-            <div class="card-body">
-                <p class="card-text">Studio</p>
+        </a>
+
+        <a asp-controller="Item" asp-action="List" asp-route-category="Microphones">
+            <div class="card">
+                <img class="card-img-top" src="~/imgs/categories/microphones.jpg" alt="Card image cap" style="height: 16rem;">
+                <div class="card-body">
+                    <p class="card-text">Microphones</p>
+                </div>
             </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src="~/imgs/categories/microphones.jpg" alt="Card image cap" style="height: 16rem;">
-            <div class="card-body">
-                <p class="card-text">Microphones</p>
+        </a>
+
+        <a asp-controller="Item" asp-action="List" asp-route-category="Software">
+            <div class="card">
+                <img class="card-img-top" src="~/imgs/categories/software.jpg" alt="Card image cap" style="height: 16rem;">
+                <div class="card-body">
+                    <p class="card-text">Software</p>
+                </div>
             </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src="~/imgs/categories/software.jpg" alt="Card image cap" style="height: 16rem;">
-            <div class="card-body">
-                <p class="card-text">Software</p>
+        </a>
+
+        <a asp-controller="Item" asp-action="List" asp-route-category="Accessories">
+            <div class="card">
+                <img class="card-img-top" src="~/imgs/categories/acc.jpg" alt="Card image cap" style="height: 16rem;">
+                <div class="card-body">
+                    <p class="card-text">Accessories</p>
+                </div>
             </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src="~/imgs/categories/acc.jpg" alt="Card image cap" style="height: 16rem;">
-            <div class="card-body">
-                <p class="card-text">Accessories</p>
-            </div>
-        </div>
+        </a>
 
     <!-- ZROBIC SEKCJE Z PROMOCJAMI -->
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            @foreach (var item in Model.ItemsOfTheWeek)
-            {
-                <div class="col">
-                        <img src="@item.ImageThumbnailUrl" class="card-img-top" alt="@item.Name">
-                        <div class="card-body">
-                            <h4 class="d-grid">
-                            </h4>
-
-                            <div class="d-flex justify-content-between mt-2">
-                                <h2 class="text-start">
-                                    <a asp-controller="Item"
-                                       asp-action="Details"
-                                       asp-route-id="@item.ItemId"
-                                       >@item.Name</a>
-                                </h2>
-                                <h5 class="text-nowrap">
-                                    @item.Price.ToString("c")
-                                </h5>
-                            </div>
-                        </div>
-                </div>
-            }
+        <div class="text-center">
+            <span class="d-flex w-100 justify-content-center">Products of the week</span>
+            <h5>Our selection of top-quality products</h5>
+            <div class="row row-cols-1 row-cols-md-3 w-100">
+                @foreach (var item in Model.ItemsOfTheWeek)
+                {
+                   <partial name="_ItemCard" model="item"/>
+                }
+            </div>
+        </div>
+        <div class="w-25 h-100 d-flex justify-content-center align-items-center">
+            <div class="text-dark">
+                <h4>Store Visits: @Model.VisitCounter.Count</h4>
+            </div>
         </div>
     </div>
 </div>

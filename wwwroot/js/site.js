@@ -55,7 +55,15 @@ const dragStop = () => {
     autoSlide();
 }
 
+function submitForm() {
+
+    $('#submitBtn').click();
+}
+
+
+
 carousel.addEventListener("mousedown", dragStart);
 carousel.addEventListener("mousemove", dragging);
 carousel.addEventListener("mouseup", dragStop);
 carousel.addEventListener("mouseleave", dragStop);
+

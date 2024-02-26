@@ -6,6 +6,7 @@
         public string Name { get; set; } = string.Empty;
         public string? Description { get; set; }
         public decimal Price { get; set; }
+        public float? Discount { get; set; }
         public string? ImageUrl { get; set; }
         public string? ImageThumbnailUrl { get; set; }
         public bool IsItemOfTheWeek { get; set; }

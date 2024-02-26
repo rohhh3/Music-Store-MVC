@@ -1,18 +1,41 @@
 ﻿@model Item
 
-<h3 class="my-5">
-    @Model.Name
-</h3>
+<div class="container">
+    <h3 class="my-5">
+        @Model.Name
+    </h3>
 
-<div class="row gx-5">
-    <img alt="@Model.Name" src="@Model.ImageUrl" class="img-fluid col-5" />
-    <div class="col-7">
-        <p>@Model.Description</p>
-        <h3 class="pull-right">@Model.Price.ToString("c")</h3>
-        <div class="addToCart">
-            <p class="button">
+    <div class="row">
+        <img alt="@Model.Name" src="@Model.ImageUrl" class="img-fluid col" />
+        <div class="col">
+            <p>@Html.Raw(Model.Description)</p>
+            <h3 class="pull-right">
+            @{
+                string formattedPrice = "";
 
-            </p>
+                if (ViewBag.SelectedCurrency == "PLN")
+                {
+                    formattedPrice = $"{Math.Round(Model.Price * ViewBag.ExchangeRate, 2)} zł";
+                }
+                else if (ViewBag.SelectedCurrency == "USD")
+                {
+                    formattedPrice = $"${Math.Round(Model.Price * ViewBag.ExchangeRate, 2)}";
+                }
+                // Add more currency cases if needed
+
+                <p class="card-text">@formattedPrice</p>
+            }
+            </h3>
+            <div class="addToCart">
+                <p class="button">
+                    <a class="btn btn-secondary"
+                        asp-controller="ShoppingCart"
+                        asp-action="AddToShoppingCart"
+                        asp-route-itemId="@Model.ItemId">
+                        + Add to cart
+                    </a>
+                </p>
+            </div>
         </div>
     </div>
 </div>

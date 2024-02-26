@@ -1,29 +1,19 @@
 ﻿@model ItemListViewModel
 
-<h1>@Model.CurrentCategory</h1>
+<div class="category-thumbnail mb-3" style="background-image: url(@Model.CategoryImageUrl)">
+    <div class="thumbnail-text">
+        @Model.CurrentCategory
+    </div>
+</div>
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
+
+<a class="btn btn-primary" asp-controller="Categories" asp-action="GeneratePdf" asp-route-categoryName="@Model.CategoryName">Generate PDF</a>
+
+<div class="row row-cols-1 row-cols-md-3 g-4 w-100" id="tblItems">
 
     @foreach (var item in Model.Items)
     {
-        <div class="col">
-            <div class="card">
-                <img src="@item.ImageThumbnailUrl" class="card-img-top" alt="@item.Name">
-                <div class="card-body">
-                    <h4 class="d-grid">
-                    </h4>
-
-                    <div class="d-flex justify-content-between mt-2">
-                        <h2 class="text-start">
-                            <a asp-controller="Item" asp-action="Details" asp-route-id="@item.ItemId">@item.Name</a>
-                        </h2>
-                        <h5 class="text-nowrap">
-                            @item.Price.ToString("c")
-                        </h5>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <partial name="_ItemCard" model="item" />
     }
 
 </div>
